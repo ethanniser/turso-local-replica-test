@@ -1,8 +1,8 @@
 import Database from "libsql-experimental";
 require("dotenv").config();
 
-const url = process.env.LIBSQL_URL;
-const authToken = process.env.LIBSQL_AUTH_TOKEN;
+const url = process.env.LIBSQL_URL ?? "env missing";
+const authToken = process.env.LIBSQL_AUTH_TOKEN ?? "env missing";
 
 const options = { syncUrl: url, authToken };
 const db = new Database("hello.db", options);
@@ -49,7 +49,7 @@ async function calculateAverage(func: () => Promise<number>, n: number) {
 }
 
 console.log("LOCAL-");
-calculateAverage(testRead, 20)
+calculateAverage(testRead, 10)
   .then((average) => {
     console.log(`READ: Average: ${average} ms`);
   })
@@ -57,7 +57,7 @@ calculateAverage(testRead, 20)
     console.error(`READ: An error occurred: ${error}`);
   });
 
-calculateAverage(testWrite, 1)
+calculateAverage(testWrite, 10)
   .then((average) => {
     console.log(`WRITE: Average: ${average} ms`);
   })

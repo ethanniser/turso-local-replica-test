@@ -31,10 +31,10 @@ async function testWrite() {
   return time;
 }
 
-async function calculateAverage(func: () => Promise<number>) {
+async function calculateAverage(func: () => Promise<number>, n: number) {
   const promises: Promise<number>[] = [];
 
-  for (let i = 1; i <= 20; i++) {
+  for (let i = 1; i <= n; i++) {
     promises.push(func()); // Replace with your actual async function
   }
 
@@ -47,7 +47,7 @@ async function calculateAverage(func: () => Promise<number>) {
 }
 
 console.log("REMOTE-");
-calculateAverage(testRead)
+calculateAverage(testRead, 10)
   .then((average) => {
     console.log(`READ: Average: ${average} ms`);
   })
@@ -55,7 +55,7 @@ calculateAverage(testRead)
     console.error(`READ: An error occurred: ${error}`);
   });
 
-calculateAverage(testWrite)
+calculateAverage(testWrite, 10)
   .then((average) => {
     console.log(`WRITE: Average: ${average} ms`);
   })

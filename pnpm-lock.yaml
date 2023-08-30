@@ -12,8 +12,8 @@ dependencies:
     specifier: ^16.3.1
     version: 16.3.1
   libsql-experimental:
-    specifier: ^0.0.22
-    version: 0.0.22
+    specifier: ^0.0.23
+    version: 0.0.23
 
 devDependencies:
   '@types/node':
@@ -259,16 +259,16 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@libsql/experimental-darwin-arm64@0.0.22:
-    resolution: {integrity: sha512-UkpNAHMW/cJOY/R41xPMnE7TEfMMRCbONRSulqgs/7i2h8iBaVYm+rH9seQXv7lgwKrZflbDhW3eXqg397UcYg==}
+  /@libsql/experimental-darwin-arm64@0.0.23:
+    resolution: {integrity: sha512-dBVS6WmqwTZicBv6RH7nfLm3ERwYhvg+7QAKtnWmsyLfAAaOPYFwb1oHmpWNw+c/ppNY1yablcP7nMC27KWzTw==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: false
     optional: true
 
-  /@libsql/experimental-linux-x64-gnu@0.0.22:
-    resolution: {integrity: sha512-c39uoBqUAzUfcc43Dk/ibHZLCnsnPw9G3gOwEmVR+FpENNKGerGK61Ne5M672eI5tvzjnmEUPT0q1NZqJqonDQ==}
+  /@libsql/experimental-linux-x64-gnu@0.0.23:
+    resolution: {integrity: sha512-bDieC1UVcuqQWakJBazlRHyI7ids8PxOb18W407JC2CJX4hthZuptZjbhS2k+ztx7uTJ6SVzLShYoIesL0PTYQ==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
@@ -497,15 +497,15 @@ packages:
     resolution: {integrity: sha512-3MEt5DTINKqfScXKfJFrRbxkrnk2AxPWGBL/ycjz4dK8iqiSJ06UxD8jh8xuh6p10TX4t2+7FsBYVxxQbMg+qA==}
     dev: false
 
-  /libsql-experimental@0.0.22:
-    resolution: {integrity: sha512-XTahNzcnQtx5z9klZJYCnKSmDNEKmeQZo0XIzPUIvErF8Sq4fLcLW9uBd3i5SFI/ROw8ChnRZMN3CZF+etC/tw==}
+  /libsql-experimental@0.0.23:
+    resolution: {integrity: sha512-Sxf3Orgpqr2VB1nb65+aLcEOIn5+4JHDtlR63r8voN2ddMPbsFZGfEFGO4GpK4FnIp2QZC+R0T0cPcsLdJ2J+A==}
     cpu: [x64, arm64]
     os: [darwin, linux]
     dependencies:
       '@neon-rs/load': 0.0.4
     optionalDependencies:
-      '@libsql/experimental-darwin-arm64': 0.0.22
-      '@libsql/experimental-linux-x64-gnu': 0.0.22
+      '@libsql/experimental-darwin-arm64': 0.0.23
+      '@libsql/experimental-linux-x64-gnu': 0.0.23
     dev: false
 
   /lru-cache@6.0.0:

@@ -1,8 +1,8 @@
 import { createClient } from "@libsql/client";
 require("dotenv").config();
 
-const url = process.env.LIBSQL_URL;
-const authToken = process.env.LIBSQL_AUTH_TOKEN;
+const url = process.env.LIBSQL_URL ?? "env missing";
+const authToken = process.env.LIBSQL_AUTH_TOKEN ?? "env missing";
 
 const client = createClient({ url, authToken });
 
