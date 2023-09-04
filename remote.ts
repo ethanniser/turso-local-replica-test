@@ -1,8 +1,12 @@
 import { createClient } from "@libsql/client";
 require("dotenv").config();
 
-const url = process.env.LIBSQL_URL ?? "env missing";
-const authToken = process.env.LIBSQL_AUTH_TOKEN ?? "env missing";
+const url = process.env.LIBSQL_URL;
+const authToken = process.env.LIBSQL_AUTH_TOKEN;
+
+if (!url || !authToken) {
+  throw new Error("Environment variables missing");
+}
 
 const client = createClient({ url, authToken });
 
@@ -11,7 +15,7 @@ async function testRead() {
 
   await client.execute({
     sql: "SELECT * FROM users WHERE id = ?",
-    args: [Math.floor(Math.random() * 200)],
+    args: [Math.floor(Math.random() * 200) + 1],
   });
 
   const time = performance.now() - start;
@@ -21,28 +25,23 @@ async function testRead() {
 async function testWrite() {
   const start = performance.now();
 
-  for (let i = 1; i < 20; i++) {
-    client.execute(
-      `INSERT INTO users (name, email) VALUES ('test_${i}', 'test_${i}@example.com')`
-    );
-  }
+  await client.execute(
+    `INSERT INTO users (name, email) VALUES ('test_${Math.random()}', 'test_${Math.random()}@example.com')`
+  );
 
   const time = performance.now() - start;
   return time;
 }
 
 async function calculateAverage(func: () => Promise<number>, n: number) {
-  const promises: Promise<number>[] = [];
+  let sum = 0;
 
   for (let i = 1; i <= n; i++) {
-    promises.push(func()); // Replace with your actual async function
+    const time = await func();
+    sum += time;
   }
 
-  const results = await Promise.all(promises);
-
-  const sum = results.reduce((acc, value) => acc + value, 0);
-  const average = sum / results.length;
-
+  const average = sum / n;
   return average;
 }
 
